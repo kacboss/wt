@@ -1,0 +1,16 @@
+<div class="post-box">
+  <div class="box-1">
+    <h1>Celebs index</h1>
+    <div class="celebs-list">
+      <% @celebs.each do |post| %>
+        <div class="celeb">
+          <h1><%= link_to celeb.title, post %></h1>
+          <p><%= post.birth_date %></p>
+          <p><%= link_to post.user.email, post.user %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <%= link_to 'New celeb', new_celeb_path %>
+</div>

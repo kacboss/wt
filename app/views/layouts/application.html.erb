@@ -4,12 +4,26 @@
     <title>Wt</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+        <% if current_user  %>
+          <li><%=link_to "Profile", edit_user_registration_path  %></li>
+          <li><%=link_to "Sign out", destroy_user_session_path, method: :delete  %></li>
+        <% else  %>
+          <li class="join"><%=link_to "Join", new_user_registration_path %></li>
+          <li class="login"><%= link_to "Log in", new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <% render 'layouts/alerts' %>
     <%= yield %>
   </body>
 </html>
